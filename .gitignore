@@ -14,8 +14,11 @@ pids
 logs
 results
 node_modules
-build
-!build/Release/kerberos.node
+build/*
+!build/Release/
+build/Release/*
+!build/Release/*.node
+
 
 npm-debug.log
 
