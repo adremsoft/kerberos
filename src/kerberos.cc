@@ -60,7 +60,8 @@ Function KerberosClient::Init(Napi::Env env) {
          InstanceAccessor("username", &KerberosClient::UserNameGetter, nullptr),
          InstanceAccessor("response", &KerberosClient::ResponseGetter, nullptr),
          InstanceAccessor("responseConf", &KerberosClient::ResponseConfGetter, nullptr),
-         InstanceAccessor("contextComplete", &KerberosClient::ContextCompleteGetter, nullptr)});
+         InstanceAccessor("contextComplete", &KerberosClient::ContextCompleteGetter, nullptr),
+         InstanceAccessor("wrapTokenSize", &KerberosClient::WrapTokenSizeGetter, nullptr)});
 }
 
 Object KerberosClient::NewInstance(Napi::Env env, std::shared_ptr<krb_client_state> state) {
@@ -97,6 +98,10 @@ Value KerberosClient::ResponseConfGetter(const CallbackInfo& info) {
 
 Value KerberosClient::ContextCompleteGetter(const CallbackInfo& info) {
     return Boolean::New(Env(), state()->context_complete);
+}
+
+Value KerberosClient::WrapTokenSizeGetter(const CallbackInfo& info) {
+    return Number::New(Env(), state()->wrapTokenSize);
 }
 
 /// KerberosServer

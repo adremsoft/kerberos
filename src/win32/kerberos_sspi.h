@@ -48,6 +48,7 @@ struct sspi_client_state {
 
     INT responseConf = 0;
     BOOL context_complete = FALSE;
+    ULONG wrapTokenSize = 0;
 
     sspi_client_state() {}
     sspi_client_state(const sspi_client_state&) = delete;

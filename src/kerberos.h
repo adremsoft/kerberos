@@ -45,6 +45,7 @@ class KerberosClient : public Napi::ObjectWrap<KerberosClient> {
     Napi::Value ResponseGetter(const Napi::CallbackInfo& info);
     Napi::Value ResponseConfGetter(const Napi::CallbackInfo& info);
     Napi::Value ContextCompleteGetter(const Napi::CallbackInfo& info);
+    Napi::Value WrapTokenSizeGetter(const Napi::CallbackInfo& info);
 
     void Step(const Napi::CallbackInfo& info);
     void UnwrapData(const Napi::CallbackInfo& info);

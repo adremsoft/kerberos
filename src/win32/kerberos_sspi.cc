@@ -180,7 +180,7 @@ auth_sspi_client_step(sspi_client_state* state, SEC_CHAR* challenge, SecPkgConte
     }
 
     state->haveCtx = 1;
-    state->context_complete = TRUE;
+    state->context_complete = (status == SEC_E_OK);
     if (outBufs[0].cbBuffer) {
         state->response = base64_encode((const SEC_CHAR*)outBufs[0].pvBuffer, outBufs[0].cbBuffer);
         if (!state->response) {
@@ -379,6 +379,7 @@ auth_sspi_client_wrap(sspi_client_state* state,
         return sspi_error_result(status, "EncryptMessage");
     }
 
+    state->wrapTokenSize = wrapBufs[0].cbBuffer;
     outbufSize =
         wrapBufs[0].cbBuffer + wrapBufs[1].cbBuffer + wrapBufs[2].cbBuffer;
     outbuf = (SEC_CHAR*)malloc(sizeof(SEC_CHAR) * outbufSize);
