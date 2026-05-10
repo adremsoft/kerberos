@@ -15,6 +15,7 @@ logs
 results
 node_modules
 build
+!build/Release/kerberos.node
 
 npm-debug.log
 
