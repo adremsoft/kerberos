@@ -1,12 +1,13 @@
 {
   "name": "kerberos",
-  "version": "7.1.0",
+  "version": "7.1.1",
   "description": "Kerberos library for Node.js",
   "main": "lib/index.js",
   "files": [
     "lib",
     "src",
     "binding.gyp",
+    "build/Release/*.node",
     "HISTORY.md",
     "README.md",
     "index.d.ts"
@@ -50,7 +51,6 @@
     "prettier": "^3.6.2"
   },
   "scripts": {
-    "install": "prebuild-install --runtime napi --path ./build/Release || exit 0",
     "no-install": "node-gyp rebuild",
     "format-cxx": "clang-format -i 'src/**/*'",
     "format-js": "ESLINT_USE_FLAT_CONFIG=false eslint lib test --fix",
